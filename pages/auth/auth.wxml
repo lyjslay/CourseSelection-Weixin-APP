@@ -1,0 +1,33 @@
+<!--pages/auth/auth.wxml-->
+<view class="xiaohui">
+  <image src="../../img/tl.jpg" ></image>
+</view>
+<view class="information">
+  <view class="title">申请获得你的公开信息，用于注册和登录选课系统，请确保手机WIFI连接至校园网环境下。</view>
+  <view class="title">首次授权后需要注册绑定身份信息，后续即可直接登录选课。</view>
+  <view class="title">遇到问题请及时联系管理员付老师，电话xxxxxxxx。</view>
+  <view class="btn auth">
+        <van-button color="#3b87dd" type="primary" size="large" bindclick="handleAuth">授权并登录</van-button>
+  </view>
+  <view class="btn cancel">
+        <van-button color="#ff0000" type="primary" size="large" bindclick="handleAuthCancel">前往解除绑定</van-button>
+  </view>
+<view>
+当前状态：
+</view>
+  <view wx:if="{{ip_success}}">
+    <text>校园网验证通过</text>
+    <view wx:if="{{auth_success}}">
+      <text>身份认证通过，正在跳转选课页面</text>
+    </view>  
+    <view wx:else>
+      <text>未注册，正在跳转注册页面</text>
+    </view>
+  </view>
+  <view wx:else>
+    <text>未授权或未在校园网环境下授权</text>
+  </view>
+
+  
+
+</view>

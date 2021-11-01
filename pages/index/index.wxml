@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<view class="xiaohui">
+  <image src="../../img/tl2.jpg" ></image>
+</view>
+
+
+
+<view class="container">
+  <van-cell-group>
+  <van-field
+    value="{{ username }}"
+    label="姓名"
+    left-icon="user-o"
+    placeholder="请输入姓名"
+    bind:input="setName"
+  />
+
+  <van-field
+    value="{{ uid }}"
+    label="学号"
+    left-icon="user-circle-o"
+    placeholder="请输入学号"
+    bind:input="setUid"
+  />
+
+
+  <van-field
+    value="{{ phonenum }}"
+    label="手机号"
+    placeholder="请输入手机号"
+    left-icon="phone-o"
+    border="{{ false }}"
+    bind:input="setPhone"
+  />
+
+  <van-radio-group value="{{ identity }}" bind:change="onChange">
+      <view style="float:left;margin-right:200rpx;margin-left:40rpx">
+        <van-radio name="student" class="radio"> 学生</van-radio>
+      </view>
+      <view style="float:left ">
+        <van-radio name="teacher" class="radio"> 老师</van-radio>
+      </view>
+  </van-radio-group>
+  <view class="btn">
+    <view class="btn reg">
+      <van-button color="#3b87dd" disable="{{disable}}" type="primary" size="large" bindclick="handleReg">注册绑定</van-button>
+    </view>
+  </view>
+  </van-cell-group>
+</view>
+
+<van-divider contentPosition="center">注意事项</van-divider>
+<view class="information">
+  <view class="title1">1.请同学们填写自己的学号，便于系统进行身份绑定</view>
+  <view class="title1">2.请同学们填写手机号，方便教师与你联系</view>
+  <view class="title1">3.进入选课页面后请先核对个人信息，如发现信息错误，请及时回到登录页面解绑</view>
+  <view class="title1">4.请勿填写虚假信息或冒充他人，否则后果自负</view>
+  <view class="title1">5.遇到问题请及时联系管理员付老师，电话xxxxxxxx</view>
+</view>

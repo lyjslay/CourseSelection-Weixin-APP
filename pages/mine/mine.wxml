@@ -1,0 +1,172 @@
+<!--pages/mine/mine.wxml-->
+<view class="info">
+<van-row>
+  <van-col custom-class="textStyle02" span="8">姓名：{{uname}}</van-col>
+  <van-col custom-class="textStyle02" span="8">学号：{{ucode}}</van-col>
+  <van-col custom-class="textStyle02" span="8">已选课程数：{{sel_number}}</van-col>
+</van-row>
+</view>
+
+<view wx:if="{{active=='home'}}">
+  <view wx:if="{{have_exp == true}}">
+    <block wx:for="{{mycourse_detail}}" wx:key="ename">
+      <van-cell  
+        icon="label-o" 
+        use-label-slot="true" 
+        size="large">   
+        <view slot="title">
+          <view class="titleview">
+            <view>
+              <text> {{item.ename}} </text>
+            </view>
+          </view>
+        </view>
+        <view slot="label" 
+          data-courseName="{{item.ename}}"
+          data-index="{{index}}"
+          class="detail">
+          <van-icon name="calendar-o" size="25rpx"/>
+          <text> 周数 : {{'第'+item.eweeks+'周星期'+item.eweek}}\n </text>
+          <van-icon name="location-o" size="25rpx"/>
+          <text> 地点 : {{item.eroom}}\n </text>
+          <van-icon name="clock-o" size="25rpx"/>
+          <text> 时间 : {{item.etime}}\n </text>
+        </view>
+        <view class="btn">
+          <van-button id="{{item.ename+' '+item.eid}}" size="normal" color="#3b87dd" bind:click="quitCourse">退课</van-button>
+      </view>
+      </van-cell>
+    </block>
+  </view>
+  <view wx:else>
+    <van-empty
+      class="custom-image"
+      image="../../../img/empty-image.png"
+      description="抱歉，你还没有选课"
+    />
+  </view>
+</view>
+
+
+<view wx:elif="{{active=='preview'}}">
+  <view wx:if="{{have_exp == true}}">
+    <block wx:for="{{mycourse_detail}}" wx:key="eweeks">
+      <van-cell  
+        icon="label-o" 
+        use-label-slot="true" 
+        size="large">   
+        <view slot="title">
+          <view class="titleview">
+            <view>
+              <text> {{item.ename}} </text>
+            </view>
+          </view>
+        </view>
+        <view slot="label" 
+          data-courseName="{{item.ename}}"
+          data-index="{{index}}"
+          class="detail">
+          <van-icon name="calendar-o" size="25rpx"/>
+          <text> 周数 : {{'第'+item.eweeks+'周星期'+item.eweek}}\n </text>
+          <van-icon name="location-o" size="25rpx"/>
+          <text> 地点 : {{item.eroom}}\n </text>
+          <van-icon name="clock-o" size="25rpx"/>
+          <text> 时间 : {{item.etime}}\n </text>
+        </view>
+        <view class="btn">
+          <van-button id="{{item.ename+' '+item.eid}}" size="normal" color="#3b87dd" bind:click="preCourse">预习</van-button>
+        </view>
+      </van-cell>
+    </block>
+  </view>
+  <view wx:else>
+    <van-empty
+      class="custom-image"
+      image="../../../img/empty-image.png"
+      description="请先选课再预习"
+    />
+  </view>
+</view>
+
+
+<view wx:elif="{{active=='upload'}}">
+  <van-divider contentPosition="center">选择实验(选完点确认)</van-divider>
+  <view class="picker">
+    <van-row>
+        <van-col span="16" offset="4">   
+          <van-picker columns="{{ upload_picker }}" 
+            show-toolbar="true"
+            title="选择要提交的实验" 
+            item-height="30"
+            bind:confirm="onConfirm"
+            bind:cancel="onCancel" 
+            confirm-button-text="确认"/>  
+        <view class="stem">已选择:{{upload_expname}}</view>
+      </van-col>      
+    </van-row>
+  </view>
+  <van-divider contentPosition="center">选择文件</van-divider>   
+  <van-row>
+    <van-col span="16" offset="4">
+      <van-uploader 
+        accept="file" 
+        max-count="1" 
+        preview-size = "250px"
+        upload-icon="label-o"
+        upload-text="{{file_state_info}}" 
+        file-list="{{ fileList }}" 
+        bind:after-read="afterRead" />
+        <view class="btn">
+          <van-button color="#3b87dd" size="large" bindclick="doUpload">上传</van-button>
+        </view>
+    </van-col>      
+  </van-row>
+
+</view>
+
+<view wx:elif="{{active=='safe'}}">
+  <view wx:if="{{safe_done == false && have_question == true}}">
+    <van-divider contentPosition="center">注意事项</van-divider> 
+      <view class="title1">1.请先完成实验安全知识学习后再来答题</view>
+      <view class="title1">2.满分100分，70分及以上视为合格</view>
+      <view class="title1">3.不合格者不允许进行线下实验课</view>
+    <van-divider contentPosition="center">第{{current_question_index+1}}题，共{{question_number}}题</van-divider>
+    <van-row>
+      <van-col span="16" offset="4">
+        <view class="stem">{{question_once.qstem}}</view>
+        <van-checkbox-group value="{{sel_option}}" bind:change="onOptionChange">
+          <view wx:for="{{option_once}}" wx:key="qoption" class="option">
+            <van-checkbox name="{{item.qoption}}">{{item.qoption}}</van-checkbox>
+          </view>
+        </van-checkbox-group>
+        <view class="btn">
+          <van-button id="{{sel_option}}" color="#3b87dd" type="primary" size="large" bindclick="nextQuestion">{{button_info}}</van-button>
+        </view>
+      </van-col>
+    </van-row>
+
+  </view>  
+  <view wx:elif="{{safe_done == true}}">
+    <van-empty
+      class="custom-image"
+      image="../../../img/icon-test_5.png"
+      description="您已通过安全考核，无需再次测试"
+    />
+  </view>
+  <view wx:else>
+    <van-empty
+      class="custom-image"
+      image="../../../img/empty-image.png"
+      description="无法获取题库，请联系管理员付老师，电话:xxxxxxxx"
+    />
+  </view>
+</view>
+
+
+<van-tabbar active="{{ active }}" bind:change="onChange" placeholder="true">
+  <van-tabbar-item name="home" icon="home-o">我的课程</van-tabbar-item>
+  <van-tabbar-item name="preview" icon="records">实验预习</van-tabbar-item>
+  <van-tabbar-item name="upload" icon="back-top">报告提交</van-tabbar-item>
+  <van-tabbar-item name="safe" icon="warning">安全教育</van-tabbar-item>
+</van-tabbar>
+

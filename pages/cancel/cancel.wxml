@@ -1,0 +1,35 @@
+<!--pages/cancel/cancel.wxml-->
+<view class="xiaohui">
+  <image src="../../img/tl2.jpg" ></image>
+</view>
+<view class="container">
+  <van-cell-group>
+
+  <van-field
+    value="{{ ucode }}"
+    label="学号"
+    left-icon="user-circle-o"
+    placeholder="请输入学号"
+    bind:input="setUid"
+  />
+
+
+  <van-radio-group value="{{ identity }}" bind:change="onChange">
+      <view style="float:left;margin-right:200rpx;margin-left:40rpx">
+        <van-radio name="student" class="radio"> 学生</van-radio>
+      </view>
+      <view style="float:left ">
+        <van-radio name="teacher" class="radio"> 老师</van-radio>
+      </view>
+  </van-radio-group>
+  <view class="btn">
+    <view class="btn log">
+      <van-button color="#3b87dd" type="primary" size="large" bindclick="handleCancel">解除与当前微信的绑定</van-button>
+    </view>
+  </view>
+  </van-cell-group>
+
+  <van-divider contentPosition="center">注意事项</van-divider>
+  <view class="title1">1.解绑后安全测试的成绩将会清零</view>
+  <view class="title1">2.遇到问题请及时联系管理员付老师，电话xxxxxxxx</view>
+</view>

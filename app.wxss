@@ -1,0 +1,92 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+} 
+
+.box{
+  border: 1px solid silver;
+  margin: 20rpx;
+  padding: 20rpx;
+}
+
+.title{
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+  color:palevioletred;
+}
+
+.title1{
+  font-size: 15px;
+  text-align: left;
+  margin: 20rpx 100rpx;
+  margin-bottom: 10px;
+  color:rgb(6, 101, 226);
+}
+
+.stem{
+  font-size: 15px;
+  text-align: left;
+  margin-bottom: 10px;
+  color:palevioletred;
+}
+
+.textStyle01 {
+  color: #f00;
+  letter-spacing: 10px;
+  text-align: left;
+  text-indent: 50px;
+  text-decoration: underline;
+  text-decoration-color:aqua;
+  line-height: 30px;
+  white-space: normal;
+}
+.textStyle02{
+  text-align: center;
+  word-spacing: 10px;
+  font-weight:bold;
+  text-transform: uppercase;
+  white-space: pre-wrap;
+
+}
+
+image{
+
+  height: 500rpx;
+  width: 100%;
+  
+}
+.btn{
+  text-align: center;
+  margin: 10rpx;
+  padding: 10rpx;
+}
+.reg,.log{
+  margin: 20rpx;
+}
+.radio{
+  width: 50%;
+  padding: 40rpx;
+}
+
+.option{
+  margin:20rpx 0rpx;
+}
+
+.picker{
+  border-radius: 5%;
+  border-width: 4rpx 4rpx 4rpx 4rpx;
+  border-color:silver;
+  border-style: solid;
+  margin: 5%;
+}
+
+.info{
+  width: 90%;
+}

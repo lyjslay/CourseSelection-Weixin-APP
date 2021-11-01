@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-row": "../../vant-weapp/dist/row",
+    "van-col": "../../vant-weapp/dist/col",
+    "van-button": "../../vant-weapp/dist/button",
+    "van-cell": "../../vant-weapp/dist/cell",
+    "van-cell-group": "../../vant-weapp/dist/cell-group",
+    "van-dialog": "../../vant-weapp/dist/dialog",
+    "van-icon": "../../vant-weapp/dist/icon",
+    "van-notify": "../../vant-weapp/dist/notify",
+    "van-divider": "../../vant-weapp/dist/divider/index"
+    
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "van-row": "../../vant-weapp/dist/row",
+    "van-col": "../../vant-weapp/dist/col",
+    "van-button": "../../vant-weapp/dist/button",
+    "van-cell": "../../vant-weapp/dist/cell",
+    "van-cell-group": "../../vant-weapp/dist/cell-group",
+    "van-dialog": "../../vant-weapp/dist/dialog",
+    "van-icon": "../../vant-weapp/dist/icon",
+    "van-notify": "../../vant-weapp/dist/notify",
+    "van-tabbar": "../../vant-weapp/dist/tabbar/index",
+    "van-tabbar-item": "../../vant-weapp/dist/tabbar-item/index",
+    "van-dropdown-menu": "../../vant-weapp/dist/dropdown-menu/index",
+    "van-dropdown-item": "../../vant-weapp/dist/dropdown-item/index",
+    "van-empty": "../../vant-weapp/dist/empty/index"
+
+  }
+}

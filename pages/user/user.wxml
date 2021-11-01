@@ -1,0 +1,38 @@
+
+<!--pages/user/user.wxml-->
+<view class="xiaohui">
+  <image src="../../img/tl3.jpg" ></image>
+</view>
+<view>
+  <van-divider
+  contentPosition="center">
+    姓名：{{uname}}  学号：{{ucode}}
+  </van-divider>
+</view>
+<view class="title">请核对上面的姓名学号信息</view>
+<van-cell-group title="可选课程">
+  <block wx:for="{{course_type_list}}" wx:key="courseid">
+    <view wx:if="{{item.courseid}} != ''">
+      <view data-courseid="{{item.courseid}}" data-coursename="{{item.coursename}}" bindtap="select">
+        <van-cell size="large" is-link icon="eye" title="{{item.coursename}}"/>
+      </view>
+    </view>
+  </block>
+</van-cell-group>
+
+<van-cell-group title="已选课程">
+  <block wx:for="{{course_type_list}}" wx:key="courseid">
+    <view wx:if="{{item.courseid}} != ''">
+      <view data-courseid="{{item.courseid}}" data-coursename="{{item.coursename}}" bindtap="mine">
+        <van-cell size="large" is-link icon="eye" title="{{'我的'+item.coursename}}"/>
+      </view>
+    </view>
+  </block>
+</van-cell-group>
+
+
+
+
+<view class="footer">
+    @2021 rap
+</view>

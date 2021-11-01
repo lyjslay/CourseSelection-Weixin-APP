@@ -1,0 +1,74 @@
+<!--pages/selcourse/selcourse.wxml-->
+<!--scroll-view scroll-y style="width: 100%;height:80%;" refresher-enabled="{{true}}" refresher-threshold="{{45}}" refresher-default-style="black" 
+        refresher-background="white" refresher-triggered="{{triggered}}" bindrefresherrefresh="onScrollRefresh"-->
+<view class="info">
+<van-row>
+  <van-col custom-class="textStyle02" span="12">姓名：{{uname}}</van-col>
+  <van-col custom-class="textStyle02" span="12">学号：{{ucode}}</van-col>
+</van-row>
+</view>
+
+
+<van-dropdown-menu >
+  <van-dropdown-item value="{{weeks_value}}" options="{{weeks_option}}" bind:change="onWeeksChange"/>
+  <van-dropdown-item value="{{week_value}}" options="{{week_option}}" bind:change="onWeekChange"/>
+</van-dropdown-menu>
+
+<view wx:if="{{today_have_exp == false && have_exp == true}}">
+  <block wx:for="{{course_detail}}" wx:key="expername">
+    <van-cell  
+      icon="label-o" 
+      use-label-slot="true" 
+      size="large" 
+      >
+      
+      <view slot="title">
+        <view class="titleview">
+          <view>
+            <text> {{item.expername}} </text>
+          </view>
+        </view>
+      </view>
+
+      <view slot="label" 
+        data-courseName="{{item.expername}}"
+        data-index="{{index}}"
+        class="detail">
+        <van-icon name="manager" size="25rpx"/>
+        <text> 教师 : {{item.teacher}}\n </text>
+        <van-icon name="clock" size="25rpx"/>
+        <text> 地点 : {{item.room}}\n </text>
+        <van-icon name="wap-home" size="25rpx"/>
+        <text> 时间 : {{item.etime}}\n </text>
+        <van-icon name="friends" size="25rpx"/>
+        <text> 剩余名额 : {{item.sum}}</text>
+      </view>
+      <view class="btn">
+        <view wx:if="{{item.is_sel == true}}">
+          <van-button id="{{item.expername+' '+item.exptid}}" size="small" color="#3b87dd" disabled="true">已选同类课程</van-button>
+        </view>
+        <view wx:else>
+          <van-button id="{{item.expername+' '+item.exptid}}" size="normal" color="#3b87dd" bind:click="select">选课</van-button>
+        </view>
+      </view>
+    </van-cell>
+  </block>
+</view>
+
+<view wx:elif="{{today_have_exp == false && have_exp == false}}">
+    <van-empty
+    class="custom-image"
+    image="../../../img/empty-image.png"
+    description="今日暂无实验,请重新选择日期"/>
+</view>
+
+<view wx:else>
+  <van-empty
+    class="custom-image"
+    image="../../../img/lock.png"
+    description="今日已选实验,无法再选其他实验"/>
+</view>
+
+<!--/scroll-view-->
+
+

@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/auth/auth",
+    "pages/index/index",
+    "pages/cancel/cancel",
+    "pages/selcourse/selcourse",
+    "pages/mine/mine",
+    "pages/user/user",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#116ec0",
+    "navigationBarTitleText": "说唱学院选课学生端",
+    "navigationBarTextStyle": "white"
+  },
+
+  "sitemapLocation": "sitemap.json"
+}
